@@ -55,22 +55,24 @@ body {
    HEADER
 ============================== */
 .header {
+  display: flex;
+  flex-direction: column;       /* заголовок над кнопкой */
+  justify-content: center;       /* по вертикали */
+  align-items: center;           /* по горизонтали */
+  text-align: center;
+  padding: var(--space-lg);
   background: var(--color-main);
   color: var(--color-white);
-  padding: var(--space-lg);
-  text-align: center;
   position: relative;
+  margin-bottom: var(--space-lg);
 }
 
 .header__title {
   font-size: 2rem;
+  margin-bottom: var(--space-sm);
 }
 
 .header__theme-toggle {
-  position: absolute;
-  top: 50%;
-  right: var(--space-lg);
-  transform: translateY(-50%);
   padding: var(--space-sm) var(--space-md);
   border: none;
   border-radius: var(--radius);
@@ -82,6 +84,8 @@ body {
 
 .header__theme-toggle:hover {
   background: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
 
 /* ==============================
@@ -239,6 +243,13 @@ body {
 
 .project-card:hover {
   transform: translateY(-5px);
+}
+
+.project-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover; /* растягиваем изображения */
+  border-radius: var(--radius);
 }
 
 .project-card__title {

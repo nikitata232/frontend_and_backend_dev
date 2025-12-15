@@ -100,6 +100,33 @@ dialog {
 .required {
     color: #e74c3c;
 }
+.contact-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+}
+.contact-card img {
+    width: 30px;
+    height: 30px;
+}
+.contact-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    background: #667eea;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.contact-button:hover {
+    background: #764ba2;
+}
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -125,70 +152,92 @@ dialog {
     .btn {
         width: 100%;
     }
+    .contact-card {
+        flex-direction: column;
+        text-align: center;
+    }
 }
 </style>
 </head>
 <body>
 <div class="page">
 
-    <!-- ===== HEADER ===== -->
     <header class="header">
         <h1 class="header__title">Контакты</h1>
-        <button class="header__theme-toggle" onclick="toggleTheme()">Тема</button>
     </header>
 
-    <!-- ===== NAVIGATION ===== -->
     <nav class="nav">
         <ul class="nav__list">
             <li class="nav__item"><a class="nav__link" href="../index_v1.html">Главная</a></li>
-            <li class="nav__item"><a class="nav__link" href="news.html">Новости</a></li>
-            <li class="nav__item"><a class="nav__link" href="goods_v1.html">Товары</a></li>
+            <li class="nav__item"><a class="nav__link" href="projects.html">Проекты</a></li>
+            <li class="nav__item"><a class="nav__link" href="diary.html">Дневник</a></li>
             <li class="nav__item nav__item--active"><a class="nav__link" href="contacts.html">Контакты</a></li>
         </ul>
     </nav>
 
-    <!-- ===== MAIN CONTENT ===== -->
     <main class="main">
-        <section class="contacts">
-            <h2 class="contacts__title">Наши контакты</h2>
+        <section class="contacts-container">
+            <h2 class="section-title">Наши контакты</h2>
 
-            <article class="contact-item">
-                <h3 class="contact-item__title">Электронная почта</h3>
-                <p class="contact-item__value">nalimonov@mail.ru</p>
-            </article>
+            <div class="contact-card">
+                <img src="../images/icons/email.svg" alt="Email">
+                <div>
+                    <h3>Электронная почта</h3>
+                    <p>nalimonov@mail.ru</p>
+                </div>
+            </div>
 
-            <article class="contact-item">
-                <h3 class="contact-item__title">Физический адрес</h3>
-                <p class="contact-item__value">г. Москва, ул. Пушкина, д. Колотушкина</p>
-            </article>
+            <div class="contact-card">
+                <img src="../images/icons/location.svg" alt="Адрес">
+                <div>
+                    <h3>Физический адрес</h3>
+                    <p>г. Москва, ул. Пушкина, д. Колотушкина</p>
+                </div>
+            </div>
 
-            <article class="contact-item">
-                <h3 class="contact-item__title">Телефон</h3>
-                <p class="contact-item__value">+7 (800) 555-35-35</p>
-            </article>
+            <div class="contact-card">
+                <img src="../images/icons/github.svg" alt="GitHub">
+                <div>
+                    <h3>GitHub</h3>
+                    <p><a href="https://github.com/ваш-профиль" target="_blank">https://github.com/nikitata232</a></p>
+                </div>
+            </div>
 
-            <article class="contact-item">
-                <h3 class="contact-item__title">Время работы</h3>
-                <p class="contact-item__value">Пн-Пт: 9:00-18:00</p>
-            </article>
+            <div class="contact-card">
+                <img src="../images/icons/phone.svg" alt="Телефон">
+                <div>
+                    <h3>Телефон</h3>
+                    <p>+7 (800) 555-35-35</p>
+                </div>
+            </div>
 
-            <article class="contact-item">
-                <h3 class="contact-item__title">Социальные сети</h3>
-                <p class="contact-item__value">VK, Telegram, WhatsApp</p>
-            </article>
+            <div class="contact-card">
+                <img src="../images/icons/clock.svg" alt="Время работы">
+                <div>
+                    <h3>Время работы</h3>
+                    <p>Пн-Пт: 9:00-18:00</p>
+                </div>
+            </div>
 
-            <!-- Кнопка для модального окна -->
+            <div class="contact-card">
+                <img src="../images/icons/social.svg" alt="Соцсети">
+                <div>
+                    <h3>Социальные сети</h3>
+                    <p>VK, Telegram, WhatsApp</p>
+                </div>
+            </div>
+
+            <!-- Кнопка для открытия модального окна -->
             <button class="contact-button" onclick="contactModal.showModal()">Связаться с нами</button>
         </section>
     </main>
 
-    <!-- ===== FOOTER ===== -->
     <footer class="footer">
-        <p class="footer__text">© 2024 Все права защищены. Контактная информация</p>
+        <p>© 2025 Все права защищены. Контактная информация</p>
     </footer>
 </div>
 
-<!-- ===== MODAL WINDOW ===== -->
+<!-- Модальное окно -->
 <dialog id="contactModal">
     <div class="modal-header">
         <h2>Форма обратной связи</h2>
@@ -251,18 +300,12 @@ function submitForm() {
     contactModal.close();
     form.reset();
 }
-
 document.getElementById('contactModal').addEventListener('click', function(event) {
     if (event.target === this) this.close();
 });
-
 document.getElementById('feedbackForm').addEventListener('keypress', function(event) {
     if (event.key === 'Enter' && event.target.type !== 'textarea') event.preventDefault();
 });
-
-function toggleTheme() {
-    document.documentElement.classList.toggle('theme-dark');
-}
 </script>
 </body>
 </html>
