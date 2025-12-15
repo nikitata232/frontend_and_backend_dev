@@ -1,31 +1,268 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог товаров</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Контакты</title>
+<link rel="stylesheet" href="../styles/styles.css">
+<style>
+/* ===== МОДАЛЬНОЕ ОКНО ===== */
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.3s ease;
+}
+dialog {
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.3s ease;
+    max-width: 500px;
+    width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+.modal-header {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 12px 12px 0 0;
+    margin: 0;
+}
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+.modal-content {
+    padding: 2rem;
+}
+.form-group {
+    margin-bottom: 1.5rem;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e9ecef;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+.btn-secondary {
+    background: #f8f9fa;
+    color: #2c3e50;
+    border: 2px solid #e9ecef;
+}
+.btn-secondary:hover {
+    background: #e9ecef;
+}
+.required {
+    color: #e74c3c;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+@media (max-width: 600px) {
+    dialog {
+        margin: 1rem;
+        width: calc(100vw - 2rem);
+    }
+    .modal-actions {
+        flex-direction: column;
+    }
+    .btn {
+        width: 100%;
+    }
+}
+</style>
 </head>
 <body>
-    <div id="header">Хэдер</div>
+<div class="page">
 
-    <div id="menu">
-        <ul>
-            <li><a href="../index.html">Главная</a></li>
-            <li><a href="news.html">Новости</a></li>
-            <li><a href="practices.html">Практики</a></li> 
-            <li><a href="goods.html">Товары</a></li>
-            <li><a href="contacts.html">Контакты</a></li>
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <h1 class="header__title">Контакты</h1>
+        <button class="header__theme-toggle" onclick="toggleTheme()">Тема</button>
+    </header>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="nav">
+        <ul class="nav__list">
+            <li class="nav__item"><a class="nav__link" href="../index_v1.html">Главная</a></li>
+            <li class="nav__item"><a class="nav__link" href="news.html">Новости</a></li>
+            <li class="nav__item"><a class="nav__link" href="goods_v1.html">Товары</a></li>
+            <li class="nav__item nav__item--active"><a class="nav__link" href="contacts.html">Контакты</a></li>
         </ul>
+    </nav>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main">
+        <section class="contacts">
+            <h2 class="contacts__title">Наши контакты</h2>
+
+            <article class="contact-item">
+                <h3 class="contact-item__title">Электронная почта</h3>
+                <p class="contact-item__value">nalimonov@mail.ru</p>
+            </article>
+
+            <article class="contact-item">
+                <h3 class="contact-item__title">Физический адрес</h3>
+                <p class="contact-item__value">г. Москва, ул. Пушкина, д. Колотушкина</p>
+            </article>
+
+            <article class="contact-item">
+                <h3 class="contact-item__title">Телефон</h3>
+                <p class="contact-item__value">+7 (800) 555-35-35</p>
+            </article>
+
+            <article class="contact-item">
+                <h3 class="contact-item__title">Время работы</h3>
+                <p class="contact-item__value">Пн-Пт: 9:00-18:00</p>
+            </article>
+
+            <article class="contact-item">
+                <h3 class="contact-item__title">Социальные сети</h3>
+                <p class="contact-item__value">VK, Telegram, WhatsApp</p>
+            </article>
+
+            <!-- Кнопка для модального окна -->
+            <button class="contact-button" onclick="contactModal.showModal()">Связаться с нами</button>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <p class="footer__text">© 2024 Все права защищены. Контактная информация</p>
+    </footer>
+</div>
+
+<!-- ===== MODAL WINDOW ===== -->
+<dialog id="contactModal">
+    <div class="modal-header">
+        <h2>Форма обратной связи</h2>
     </div>
-
-    <div id= "contacts">
-        <p>Адрес электронной почты: nalimonov@mail.ru</p>
-        <p>Адрес: улица Пушкина,дом Колотушкина</p>
-        <button type = "button" onclick="alert('+78800554543')"">Связаться со мной</button>
-
+    <div class="modal-content">
+        <form id="feedbackForm" method="dialog">
+            <div class="form-group">
+                <label for="name">Имя <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
+            </div>
+            <div class="form-group">
+                <label for="phone">Телефон <span class="required">*</span></label>
+                <input type="tel" id="phone" name="phone" required placeholder="+7 (XXX) XXX-XX-XX">
+            </div>
+            <div class="form-group">
+                <label for="email">Электронная почта <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="example@mail.ru">
+            </div>
+            <div class="form-group">
+                <label for="category">Категория обращения <span class="required">*</span></label>
+                <select id="category" name="category" required>
+                    <option value="">Выберите категорию</option>
+                    <option value="technical">Техническая поддержка</option>
+                    <option value="commercial">Коммерческое предложение</option>
+                    <option value="cooperation">Сотрудничество</option>
+                    <option value="complaint">Жалоба</option>
+                    <option value="suggestion">Предложение</option>
+                    <option value="other">Другое</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">Текст обращения <span class="required">*</span></label>
+                <textarea id="message" name="message" required placeholder="Опишите вашу проблему или вопрос..."></textarea>
+            </div>
+            <div class="modal-actions">
+                <button type="submit" class="btn btn-secondary">Отмена</button>
+                <button type="button" class="btn btn-primary" onclick="submitForm()">Отправить</button>
+            </div>
+        </form>
     </div>
+</dialog>
 
+<script>
+function submitForm() {
+    const form = document.getElementById('feedbackForm');
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
+    const formData = new FormData(form);
+    const data = {
+        name: formData.get('name'),
+        phone: formData.get('phone'),
+        email: formData.get('email'),
+        category: formData.get('category'),
+        message: formData.get('message')
+    };
+    console.log('Данные формы:', data);
+    alert('Спасибо! Ваше обращение отправлено.');
+    contactModal.close();
+    form.reset();
+}
 
-    <div id="footer">Футер</div>
+document.getElementById('contactModal').addEventListener('click', function(event) {
+    if (event.target === this) this.close();
+});
+
+document.getElementById('feedbackForm').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter' && event.target.type !== 'textarea') event.preventDefault();
+});
+
+function toggleTheme() {
+    document.documentElement.classList.toggle('theme-dark');
+}
+</script>
 </body>
 </html>

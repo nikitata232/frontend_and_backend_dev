@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Главная - Портфолио</title>
+  <link rel="stylesheet" href="styles/styles.css">
+
+  <style>
+    /* ===== КНОПКИ НАВЫКОВ ПОД ГРУППОЙ ===== */
+    .profile__skills {
+      margin-top: 15px;
+      display: flex;
+      gap: 12px;
+    }
+
+    .profile__skill-btn {
+      padding: 8px 16px;
+      border-radius: 6px;
+      color: #fff;
+      font-weight: bold;
+      cursor: default;
+    }
+
+    .skill-btn--html { background: #e34c26; }
+    .skill-btn--css { background: #264de4; }
+    .skill-btn--js { background: #f0db4f; color: #000; }
+
+    /* ===== ШКАЛЫ НАВЫКОВ ===== */
+    .skills__list {
+      max-width: 600px;
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .skill-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .skill-bar__title {
+      font-weight: bold;
+    }
+
+    .skill-bar__track {
+      width: 100%;
+      height: 22px;
+      background: #ddd;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .skill-bar__fill {
+      height: 100%;
+      width: 75%;
+      border-radius: 12px;
+    }
+
+    .skill-bar--html .skill-bar__fill { background: #e34c26; }
+    .skill-bar--css .skill-bar__fill { background: #264de4; }
+    .skill-bar--js .skill-bar__fill { background: #f0db4f; }
+  </style>
+</head>
+
+<body class="theme-light">
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <h1 class="header__title">Моё портфолио</h1>
+    <button class="header__theme-toggle" id="themeToggle">Сменить тему</button>
+  </header>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <ul class="nav__list">
+      <li class="nav__item nav__item--active">
+        <a class="nav__link" href="index_v1.html">Главная</a>
+      </li>
+      <li class="nav__item">
+        <a class="nav__link" href="pages/news.html">Новости</a>
+      </li>
+      <li class="nav__item">
+        <a class="nav__link" href="pages/goods_v1.html">Товары</a>
+      </li>
+      <li class="nav__item">
+        <a class="nav__link" href="pages/contacts.html">Контакты</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- PROFILE -->
+    <section class="profile">
+      <div class="profile__card">
+        <img class="profile__photo" src="images/misterz.jpeg" alt="Фото">
+        <div class="profile__info">
+          <h2 class="profile__name">Лимонов Никита</h2>
+          <p class="profile__group">ЭФБО-08-24</p>
+
+          <!-- КНОПКИ -->
+          <div class="profile__skills">
+            <span class="profile__skill-btn skill-btn--html">HTML</span>
+            <span class="profile__skill-btn skill-btn--css">CSS</span>
+            <span class="profile__skill-btn skill-btn--js">JavaScript</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about">
+      <h2 class="about__title">Обо мне</h2>
+      <p class="about__text">
+        Студент, увлекаюсь веб-разработкой. Изучаю HTML, CSS и JavaScript.
+        Люблю создавать красивые и функциональные сайты.
+      </p>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="skills">
+      <h2 class="skills__title">Мои навыки</h2>
+
+      <div class="skills__list">
+
+        <div class="skill-bar skill-bar--html">
+          <span class="skill-bar__title">HTML — 75%</span>
+          <div class="skill-bar__track">
+            <div class="skill-bar__fill"></div>
+          </div>
+        </div>
+
+        <div class="skill-bar skill-bar--css">
+          <span class="skill-bar__title">CSS — 75%</span>
+          <div class="skill-bar__track">
+            <div class="skill-bar__fill"></div>
+          </div>
+        </div>
+
+        <div class="skill-bar skill-bar--js">
+          <span class="skill-bar__title">JavaScript — 75%</span>
+          <div class="skill-bar__track">
+            <div class="skill-bar__fill"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="projects">
+      <h2 class="projects__title">Проекты</h2>
+      <div class="projects__grid">
+        <div class="project-card">
+          <h3 class="project-card__title">Личный сайт</h3>
+          <p class="project-card__desc">Сайт-портфолио на HTML и CSS.</p>
+        </div>
+        <div class="project-card">
+          <h3 class="project-card__title">ToDo приложение</h3>
+          <p class="project-card__desc">Простое приложение для управления задачами.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p class="footer__text">&copy; 2025 Мой сайт</p>
+  </footer>
+
+</div>
+
+<script src="scripts/theme-toggle.js"></script>
+</body>
+</html>
