@@ -1,133 +1,161 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Проекты</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="../styles/styles.css">
-<style>
-/* ===== Центрируем header ===== */
-.header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    margin-bottom: 20px;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Проекты</title>
 
-/* ===== Растягиваем картинки в карточках проектов ===== */
-.project-card img {
-    width: 100%;
-    height: 250px; /* фиксированная высота */
-    object-fit: cover; /* масштабируем изображение по контейнеру */
-}
-</style>
+  <!-- Bootstrap (только кнопки) -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+
+  <!-- Основные стили -->
+  <link rel="stylesheet" href="../styles/styles.css">
 </head>
+
 <body class="theme-light">
 <div class="page">
 
-  <!-- Header -->
+  <!-- HEADER -->
   <header class="header">
     <h1 class="header__title">Проекты</h1>
-    <button class="header__theme-toggle" id="themeToggle">Сменить тему</button>
+    <button
+      class="header__theme-toggle"
+      id="themeToggle"
+      aria-label="Переключить светлую и тёмную тему"
+    >
+      Сменить тему
+    </button>
   </header>
 
-  <!-- Navigation -->
-  <nav class="nav">
+  <!-- NAV -->
+  <nav class="nav" aria-label="Основная навигация">
     <ul class="nav__list">
-      <li class="nav__item"><a class="nav__link" href="../index_v1.html">Главная</a></li>
-      <li class="nav__item nav__item--active"><a class="nav__link" href="projects.html">Проекты</a></li>
-      <li class="nav__item"><a class="nav__link" href="diary.html">Дневник</a></li>
-      <li class="nav__item"><a class="nav__link" href="contacts.html">Контакты</a></li>
+      <li class="nav__item">
+        <a class="nav__link" href="../index_v1.html">Главная</a>
+      </li>
+      <li class="nav__item nav__item--active">
+        <a class="nav__link" href="projects.html" aria-current="page">Проекты</a>
+      </li>
+      <li class="nav__item">
+        <a class="nav__link" href="diary.html">Дневник</a>
+      </li>
+      <li class="nav__item">
+        <a class="nav__link" href="contacts.html">Контакты</a>
+      </li>
     </ul>
   </nav>
 
-  <!-- Main content -->
-  <main class="main container my-4">
+  <!-- MAIN -->
+  <main class="main">
 
-    <!-- Filters -->
-    <div class="mb-4 text-center">
-      <button class="btn btn-primary filter-btn" data-filter="all">Все</button>
-      <button class="btn btn-outline-primary filter-btn" data-filter="html">HTML</button>
-      <button class="btn btn-outline-primary filter-btn" data-filter="css">CSS</button>
-      <button class="btn btn-outline-primary filter-btn" data-filter="js">JavaScript</button>
-    </div>
+    <!-- FILTERS -->
+    <section class="projects__filters text-center mb-4" aria-label="Фильтрация проектов">
+      <button class="btn btn-primary filter-btn" data-filter="all" aria-pressed="true">
+        Все
+      </button>
+      <button class="btn btn-outline-primary filter-btn" data-filter="html" aria-pressed="false">
+        HTML
+      </button>
+      <button class="btn btn-outline-primary filter-btn" data-filter="css" aria-pressed="false">
+        CSS
+      </button>
+      <button class="btn btn-outline-primary filter-btn" data-filter="js" aria-pressed="false">
+        JavaScript
+      </button>
+    </section>
 
-    <!-- Projects grid -->
-    <div class="row g-4" id="projectsGrid">
+    <!-- PROJECTS GRID -->
+    <section class="projects">
+      <h2 class="projects__title visually-hidden">Список проектов</h2>
 
-      <!-- Project 1 -->
-      <div class="col-md-4 project-card html" data-bs-toggle="modal" data-bs-target="#projectModal1">
-        <div class="card h-100 shadow-sm">
-          <img src="../images/site.jpg" class="card-img-top" alt="Личный сайт">
-          <div class="card-body">
-            <h5 class="card-title">Личный сайт</h5>
-            <p class="card-text">HTML & CSS проект.</p>
+      <div class="projects__grid">
+
+        <!-- PROJECT 1 -->
+        <article class="project-card html">
+          <img
+            src="../images/site.jpg"
+            alt="Скриншот личного сайта-портфолио"
+          >
+          <div class="project-card__content">
+            <h3 class="project-card__title">Личный сайт</h3>
+            <p class="project-card__desc">
+              Сайт-портфолио на HTML и CSS с адаптивной версткой.
+            </p>
           </div>
-        </div>
-      </div>
+        </article>
 
-      <!-- Project 2 -->
-      <div class="col-md-4 project-card css" data-bs-toggle="modal" data-bs-target="#projectModal2">
-        <div class="card h-100 shadow-sm">
-          <img src="../images/todo.jpeg" class="card-img-top" alt="ToDo приложение">
-          <div class="card-body">
-            <h5 class="card-title">ToDo приложение</h5>
-            <p class="card-text">CSS & JavaScript проект.</p>
+        <!-- PROJECT 2 -->
+        <article class="project-card css">
+          <img
+            src="../images/todo.jpeg"
+            alt="Интерфейс приложения для управления задачами"
+          >
+          <div class="project-card__content">
+            <h3 class="project-card__title">ToDo приложение</h3>
+            <p class="project-card__desc">
+              Приложение для управления задачами с базовой логикой.
+            </p>
           </div>
-        </div>
-      </div>
+        </article>
 
-      <!-- Project 3 -->
-      <div class="col-md-4 project-card js" data-bs-toggle="modal" data-bs-target="#projectModal3">
-        <div class="card h-100 shadow-sm">
-          <img src="../images/dota2.jpg" class="card-img-top" alt="Игра">
-          <div class="card-body">
-            <h5 class="card-title">Игра</h5>
-            <p class="card-text">JavaScript проект.</p>
+        <!-- PROJECT 3 -->
+        <article class="project-card js">
+          <img
+            src="../images/dota2.jpg"
+            alt="Скриншот игрового JavaScript-проекта"
+          >
+          <div class="project-card__content">
+            <h3 class="project-card__title">Игра</h3>
+            <p class="project-card__desc">
+              Небольшой JavaScript-проект с интерактивными элементами.
+            </p>
           </div>
-        </div>
-      </div>
+        </article>
 
-    </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- Footer -->
-  <footer class="footer text-center py-3">
-    <p>&copy; 2025 Мой сайт</p>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p class="footer__text">&copy; 2025 Мой сайт</p>
   </footer>
 
 </div>
 
-<!-- Modals -->
-<!-- ... оставляем модальные окна как было ... -->
+<!-- Переключение темы -->
+<script src="../scripts/theme-toggle.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Фильтрация проектов (доступная) -->
 <script>
-  // Фильтры проектов
   const filterButtons = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.project-card');
 
-  filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const filter = btn.dataset.filter;
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const filter = button.dataset.filter;
 
-      filterButtons.forEach(b => b.classList.remove('btn-primary'));
-      filterButtons.forEach(b => b.classList.add('btn-outline-primary'));
-      btn.classList.add('btn-primary');
-      btn.classList.remove('btn-outline-primary');
+      filterButtons.forEach(btn => {
+        btn.classList.remove('btn-primary');
+        btn.classList.add('btn-outline-primary');
+        btn.setAttribute('aria-pressed', 'false');
+      });
+
+      button.classList.add('btn-primary');
+      button.classList.remove('btn-outline-primary');
+      button.setAttribute('aria-pressed', 'true');
 
       projectCards.forEach(card => {
-        if (filter === 'all') {
-          card.style.display = 'block';
-        } else {
-          card.style.display = card.classList.contains(filter) ? 'block' : 'none';
-        }
+        const isVisible = filter === 'all' || card.classList.contains(filter);
+        card.hidden = !isVisible;
       });
     });
   });
 </script>
+
 </body>
 </html>

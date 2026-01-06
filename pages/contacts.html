@@ -4,308 +4,234 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Контакты</title>
+
+<!-- Bootstrap (только кнопки) -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Основные стили -->
 <link rel="stylesheet" href="../styles/styles.css">
+
 <style>
-/* ===== МОДАЛЬНОЕ ОКНО ===== */
-dialog::backdrop {
-    background: rgba(0, 0, 0, 0.6);
-    animation: fadeIn 0.3s ease;
+/* ===== КАРТОЧКИ КОНТАКТОВ ===== */
+.contacts-container {
+  max-width: 900px;
+  margin: 0 auto;
 }
-dialog {
-    border: none;
-    border-radius: 12px;
-    padding: 0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    animation: slideIn 0.3s ease;
-    max-width: 500px;
-    width: 90vw;
-    max-height: 90vh;
-    overflow-y: auto;
-}
-.modal-header {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-    color: white;
-    padding: 1.5rem;
-    border-radius: 12px 12px 0 0;
-    margin: 0;
-}
-.modal-header h2 {
-    margin: 0;
-    font-size: 1.5rem;
-}
-.modal-content {
-    padding: 2rem;
-}
-.form-group {
-    margin-bottom: 1.5rem;
-}
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: #2c3e50;
-}
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 0.75rem;
-    border: 2px solid #e9ecef;
-    border-radius: 6px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-    box-sizing: border-box;
-}
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #667eea;
-}
-.form-group textarea {
-    min-height: 100px;
-    resize: vertical;
-}
-.modal-actions {
-    display: flex;
-    gap: 1rem;
-    justify-content: flex-end;
-    margin-top: 2rem;
-}
-.btn {
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    font-weight: 600;
-}
-.btn-primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-}
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-}
-.btn-secondary {
-    background: #f8f9fa;
-    color: #2c3e50;
-    border: 2px solid #e9ecef;
-}
-.btn-secondary:hover {
-    background: #e9ecef;
-}
-.required {
-    color: #e74c3c;
-}
+
 .contact-card {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    margin-bottom: 15px;
+  background: var(--color-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  transition: var(--transition);
 }
+
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
 .contact-card img {
-    width: 30px;
-    height: 30px;
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
+
+.contact-card h3 {
+  margin-bottom: 5px;
+  color: var(--color-main);
+}
+
+.contact-card a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact-card a:hover {
+  text-decoration: underline;
+}
+
+/* ===== КНОПКА ===== */
 .contact-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    background: #667eea;
-    color: #fff;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 22px;
+  border-radius: var(--radius);
+  background: var(--color-accent);
+  color: var(--color-white);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
 }
 .contact-button:hover {
-    background: #764ba2;
+  background: var(--color-accent-hover);
 }
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+
+/* ===== МОДАЛКА ===== */
+dialog {
+  border: none;
+  border-radius: var(--radius);
+  max-width: 500px;
+  width: 90%;
+  padding: 0;
 }
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-50px) scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+dialog::backdrop {
+  background: rgba(0,0,0,0.6);
 }
+
+.modal-header {
+  background: var(--color-main);
+  color: var(--color-white);
+  padding: 1.5rem;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.modal-content {
+  padding: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: var(--radius);
+  border: 1px solid #ccc;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-white);
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+}
+.btn-primary:hover {
+  background: var(--color-accent-hover);
+}
+
+.btn-secondary {
+  background: #eee;
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+}
+
+/* Адаптивность */
 @media (max-width: 600px) {
-    dialog {
-        margin: 1rem;
-        width: calc(100vw - 2rem);
-    }
-    .modal-actions {
-        flex-direction: column;
-    }
-    .btn {
-        width: 100%;
-    }
-    .contact-card {
-        flex-direction: column;
-        text-align: center;
-    }
+  .contact-card {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 </style>
 </head>
-<body>
+
+<body class="theme-light">
 <div class="page">
 
-    <header class="header">
-        <h1 class="header__title">Контакты</h1>
-    </header>
+  <!-- HEADER -->
+  <header class="header">
+    <h1 class="header__title">Контакты</h1>
+    <button class="header__theme-toggle" id="themeToggle">Сменить тему</button>
+  </header>
 
-    <nav class="nav">
-        <ul class="nav__list">
-            <li class="nav__item"><a class="nav__link" href="../index_v1.html">Главная</a></li>
-            <li class="nav__item"><a class="nav__link" href="projects.html">Проекты</a></li>
-            <li class="nav__item"><a class="nav__link" href="diary.html">Дневник</a></li>
-            <li class="nav__item nav__item--active"><a class="nav__link" href="contacts.html">Контакты</a></li>
-        </ul>
-    </nav>
+  <!-- NAVIGATION -->
+  <nav class="nav">
+    <ul class="nav__list">
+      <li class="nav__item"><a class="nav__link" href="../index_v1.html">Главная</a></li>
+      <li class="nav__item"><a class="nav__link" href="projects.html">Проекты</a></li>
+      <li class="nav__item"><a class="nav__link" href="diary.html">Дневник</a></li>
+      <li class="nav__item nav__item--active"><a class="nav__link" href="contacts.html" aria-current="page">Контакты</a></li>
+    </ul>
+  </nav>
 
-    <main class="main">
-        <section class="contacts-container">
-            <h2 class="section-title">Наши контакты</h2>
+  <!-- MAIN -->
+  <main class="main container my-4">
+    <section class="contacts-container">
+      <h2 class="section-title text-center mb-4">Наши контакты</h2>
 
-            <div class="contact-card">
-                <img src="../images/icons/email.svg" alt="Email">
-                <div>
-                    <h3>Электронная почта</h3>
-                    <p>nalimonov@mail.ru</p>
-                </div>
-            </div>
+      <div class="projects__grid">
 
-            <div class="contact-card">
-                <img src="../images/icons/location.svg" alt="Адрес">
-                <div>
-                    <h3>Физический адрес</h3>
-                    <p>г. Москва, ул. Пушкина, д. Колотушкина</p>
-                </div>
-            </div>
+        <!-- EMAIL -->
+        <div class="contact-card">
+          <img src="../images/icons/email.svg" alt="Email">
+          <div>
+            <h3>Email</h3>
+            <p>nalimonov@mail.ru</p>
+          </div>
+        </div>
 
-            <div class="contact-card">
-                <img src="../images/icons/github.svg" alt="GitHub">
-                <div>
-                    <h3>GitHub</h3>
-                    <p><a href="https://github.com/ваш-профиль" target="_blank">https://github.com/nikitata232</a></p>
-                </div>
-            </div>
+        <!-- ADDRESS -->
+        <div class="contact-card">
+          <img src="../images/icons/location.svg" alt="Адрес">
+          <div>
+            <h3>Адрес</h3>
+            <p>г. Москва, ул. Пушкина</p>
+          </div>
+        </div>
 
-            <div class="contact-card">
-                <img src="../images/icons/phone.svg" alt="Телефон">
-                <div>
-                    <h3>Телефон</h3>
-                    <p>+7 (800) 555-35-35</p>
-                </div>
-            </div>
+        <!-- GITHUB -->
+        <div class="contact-card">
+          <img src="../images/icons/github.svg" alt="GitHub">
+          <div>
+            <h3>GitHub</h3>
+            <a href="https://github.com/nikitata232" target="_blank">github.com/nikitata232</a>
+          </div>
+        </div>
 
-            <div class="contact-card">
-                <img src="../images/icons/clock.svg" alt="Время работы">
-                <div>
-                    <h3>Время работы</h3>
-                    <p>Пн-Пт: 9:00-18:00</p>
-                </div>
-            </div>
+      </div>
 
-            <div class="contact-card">
-                <img src="../images/icons/social.svg" alt="Соцсети">
-                <div>
-                    <h3>Социальные сети</h3>
-                    <p>VK, Telegram, WhatsApp</p>
-                </div>
-            </div>
+      <button class="contact-button" onclick="contactModal.showModal()">Связаться с нами</button>
+    </section>
+  </main>
 
-            <!-- Кнопка для открытия модального окна -->
-            <button class="contact-button" onclick="contactModal.showModal()">Связаться с нами</button>
-        </section>
-    </main>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p class="footer__text">&copy; 2025 Все права защищены</p>
+  </footer>
 
-    <footer class="footer">
-        <p>© 2025 Все права защищены. Контактная информация</p>
-    </footer>
 </div>
 
 <!-- Модальное окно -->
 <dialog id="contactModal">
-    <div class="modal-header">
-        <h2>Форма обратной связи</h2>
-    </div>
-    <div class="modal-content">
-        <form id="feedbackForm" method="dialog">
-            <div class="form-group">
-                <label for="name">Имя <span class="required">*</span></label>
-                <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
-            </div>
-            <div class="form-group">
-                <label for="phone">Телефон <span class="required">*</span></label>
-                <input type="tel" id="phone" name="phone" required placeholder="+7 (XXX) XXX-XX-XX">
-            </div>
-            <div class="form-group">
-                <label for="email">Электронная почта <span class="required">*</span></label>
-                <input type="email" id="email" name="email" required placeholder="example@mail.ru">
-            </div>
-            <div class="form-group">
-                <label for="category">Категория обращения <span class="required">*</span></label>
-                <select id="category" name="category" required>
-                    <option value="">Выберите категорию</option>
-                    <option value="technical">Техническая поддержка</option>
-                    <option value="commercial">Коммерческое предложение</option>
-                    <option value="cooperation">Сотрудничество</option>
-                    <option value="complaint">Жалоба</option>
-                    <option value="suggestion">Предложение</option>
-                    <option value="other">Другое</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="message">Текст обращения <span class="required">*</span></label>
-                <textarea id="message" name="message" required placeholder="Опишите вашу проблему или вопрос..."></textarea>
-            </div>
-            <div class="modal-actions">
-                <button type="submit" class="btn btn-secondary">Отмена</button>
-                <button type="button" class="btn btn-primary" onclick="submitForm()">Отправить</button>
-            </div>
-        </form>
-    </div>
+  <div class="modal-header">
+    <h2>Обратная связь</h2>
+  </div>
+  <div class="modal-content">
+    <form id="feedbackForm">
+      <div class="form-group">
+        <input type="text" required placeholder="Имя">
+      </div>
+      <div class="form-group">
+        <input type="email" required placeholder="Email">
+      </div>
+      <div class="form-group">
+        <textarea required placeholder="Сообщение"></textarea>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-secondary" onclick="contactModal.close()">Отмена</button>
+        <button type="submit" class="btn-primary">Отправить</button>
+      </div>
+    </form>
+  </div>
 </dialog>
 
-<script>
-function submitForm() {
-    const form = document.getElementById('feedbackForm');
-    if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-    }
-    const formData = new FormData(form);
-    const data = {
-        name: formData.get('name'),
-        phone: formData.get('phone'),
-        email: formData.get('email'),
-        category: formData.get('category'),
-        message: formData.get('message')
-    };
-    console.log('Данные формы:', data);
-    alert('Спасибо! Ваше обращение отправлено.');
-    contactModal.close();
-    form.reset();
-}
-document.getElementById('contactModal').addEventListener('click', function(event) {
-    if (event.target === this) this.close();
-});
-document.getElementById('feedbackForm').addEventListener('keypress', function(event) {
-    if (event.key === 'Enter' && event.target.type !== 'textarea') event.preventDefault();
-});
-</script>
+<script src="../scripts/theme-toggle.js"></script>
 </body>
 </html>

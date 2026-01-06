@@ -1,110 +1,111 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Учебный дневник</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Учебный дневник</title>
 
-<!-- Bootstrap 5 CSS (CDN) -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Основной стиль -->
-<link rel="stylesheet" href="../styles/styles.css">
-
-<style>
-/* ===== Центрируем header ===== */
-.header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 20px;
-}
-</style>
+  <!-- Основные стили -->
+  <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body class="theme-light">
 <div class="page">
 
   <!-- HEADER -->
-  <header class="header">
+  <header class="header" aria-label="Заголовок страницы">
     <h1 class="header__title">Учебный дневник</h1>
-    <button class="header__theme-toggle" onclick="document.documentElement.classList.toggle('theme-dark')">Тема</button>
+    <button
+      class="header__theme-toggle"
+      id="themeToggle"
+      aria-label="Переключить светлую и тёмную тему"
+    >
+      Сменить тему
+    </button>
   </header>
 
-  <!-- NAV -->
-  <nav class="nav">
+  <!-- NAVIGATION -->
+  <nav class="nav" aria-label="Основная навигация">
     <ul class="nav__list">
-      <li class="nav__item"><a class="nav__link" href="../index_v1.html">Главная</a></li>
-      <li class="nav__item"><a class="nav__link" href="projects.html">Проекты</a></li>
-      <li class="nav__item nav__item--active"><a class="nav__link" href="diary.html">Дневник</a></li>
-      <li class="nav__item"><a class="nav__link" href="contacts.html">Контакты</a></li>
+      <li class="nav__item">
+        <a class="nav__link" href="../index_v1.html">Главная</a>
+      </li>
+      <li class="nav__item">
+        <a class="nav__link" href="projects.html">Проекты</a>
+      </li>
+      <li class="nav__item nav__item--active">
+        <a class="nav__link" href="diary.html" aria-current="page">Дневник</a>
+      </li>
+      <li class="nav__item">
+        <a class="nav__link" href="contacts.html">Контакты</a>
+      </li>
     </ul>
   </nav>
 
-  <!-- MAIN CONTENT -->
+  <!-- MAIN -->
   <main class="main container my-4">
 
-    <!-- Section: Diary Entries -->
     <section class="diary">
-      <h2 class="diary__title text-center mb-4">Учебные записи</h2>
+      <h2 class="diary__title visually-hidden">Учебные записи</h2>
 
-      <div class="row gy-4">
+      <div class="projects__grid">
 
-        <!-- Diary Entry 1 -->
-        <article class="col-md-6 col-lg-4">
-          <div class="card shadow-sm diary-entry">
-            <div class="card-body">
-              <h5 class="diary-entry__date text-muted">01.10.2025</h5>
-              <h4 class="diary-entry__topic">Практика Bootstrap</h4>
+        <!-- ENTRY 1 -->
+        <article class="diary-entry html">
+          <div class="project-card h-100 shadow-sm">
+            <div class="project-card__content">
+              <time class="diary-entry__date" datetime="2025-10-01">01.10.2025</time>
+              <h3 class="diary-entry__topic">Практика Bootstrap</h3>
               <p class="diary-entry__desc">
                 Изучал основы Bootstrap 5: контейнеры, сетки, карточки и адаптивность.
               </p>
-              <span class="badge bg-success diary-entry__status">Завершено</span>
+              <span class="diary-entry__status diary-entry__status--done" aria-label="Завершено">Завершено</span>
             </div>
           </div>
         </article>
 
-        <!-- Diary Entry 2 -->
-        <article class="col-md-6 col-lg-4">
-          <div class="card shadow-sm diary-entry">
-            <div class="card-body">
-              <h5 class="diary-entry__date text-muted">20.09.2025</h5>
-              <h4 class="diary-entry__topic">Работа с CSS переменными</h4>
+        <!-- ENTRY 2 -->
+        <article class="diary-entry css">
+          <div class="project-card h-100 shadow-sm">
+            <div class="project-card__content">
+              <time class="diary-entry__date" datetime="2025-09-20">20.09.2025</time>
+              <h3 class="diary-entry__topic">Работа с CSS-переменными</h3>
               <p class="diary-entry__desc">
                 Использовал CSS-переменные для управления цветами и отступами во всём проекте.
               </p>
-              <span class="badge bg-warning diary-entry__status">В процессе</span>
+              <span class="diary-entry__status diary-entry__status--progress" aria-label="В процессе">В процессе</span>
             </div>
           </div>
         </article>
 
-        <!-- Diary Entry 3 -->
-        <article class="col-md-6 col-lg-4">
-          <div class="card shadow-sm diary-entry">
-            <div class="card-body">
-              <h5 class="diary-entry__date text-muted">15.09.2025</h5>
-              <h4 class="diary-entry__topic">Рефакторинг по БЭМ</h4>
+        <!-- ENTRY 3 -->
+        <article class="diary-entry js">
+          <div class="project-card h-100 shadow-sm">
+            <div class="project-card__content">
+              <time class="diary-entry__date" datetime="2025-09-15">15.09.2025</time>
+              <h3 class="diary-entry__topic">Рефакторинг по БЭМ</h3>
               <p class="diary-entry__desc">
                 Переписал стили проекта в методологии БЭМ для улучшения структуры CSS.
               </p>
-              <span class="badge bg-secondary diary-entry__status">Запланировано</span>
+              <span class="diary-entry__status diary-entry__status--plan" aria-label="Запланировано">Запланировано</span>
             </div>
           </div>
         </article>
 
       </div>
     </section>
+
   </main>
 
   <!-- FOOTER -->
-  <footer class="footer text-center py-3">
+  <footer class="footer">
     <p class="footer__text">&copy; 2025 Учебный дневник</p>
   </footer>
 
 </div>
 
-<!-- Bootstrap 5 JavaScript (CDN) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../scripts/theme-toggle.js"></script>
 </body>
 </html>
